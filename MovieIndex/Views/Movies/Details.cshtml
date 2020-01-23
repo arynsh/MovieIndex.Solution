@@ -1,0 +1,35 @@
+@{
+  Layout = "_Layout";
+}
+
+@model MovieIndex.Models.Movie
+
+<h2>Movie Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+<h3>@Html.DisplayNameFor(model => model.Year): @Html.DisplayFor(model => model.Year)</h3>
+
+@if(Model.Genres.Count == 0)
+{
+    <p>This movie does not belong to any genres.</p>
+}
+else
+{
+    <h4>Genres this movie belongs to:</h4>
+    <ul>
+        @foreach (var join in Model.Genres)
+        {
+            <li>@join.Genre.Name</li>
+            @using (Html.BeginForm("Delete Genre", "Movies"))
+            {
+                @Html.Hidden("joinId", @join.GenreMovieId)
+                 <input type="submit" value="delete" class="Btn btn-warning" />
+            }
+        }
+    </ul>
+}
+<hr/>
+<p>@Html.ActionLink("Edit Movie", "Edit", new {id = Model.MovieId} )</p>
+<p>@Html.ActionLink("Delete Movie", "Delete", new {id = Model.MovieId})</p>
+<p>@Html.ActionLink("See genres", "Index", "Genres")</p>
+<p>@Html.ActionLink("Back to movie list", "Index")</p>

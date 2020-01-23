@@ -1,0 +1,26 @@
+@{
+    Layout = "_Layout";
+}
+@model MovieIndex.Models.Movie
+
+<h2>Edit</h2>
+
+<h4>Edit this movie: @Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.MovieId)
+    @Html.HiddenFor(model => model.Year)
+
+    @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)
+
+    @Html.LabelFor(model => model.Year)
+    @Html.EditorFor(model => model.Year)
+
+    @Html.Label("Select genre")
+    @Html.DropDownList("GenreId")
+
+    <input type="submit" value="Save" />
+}
+<p>@Html.ActionLink("Back to movies list", "Index")</p>

@@ -1,0 +1,28 @@
+@{
+  Layout = "_Layout";
+}
+
+@model MovieIndex.Models.Genre
+
+<h2>Genre Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+
+@if(@Model.Movies.Count == 0)
+{
+  <p>This Genre does not contain any movies</p>
+}
+else
+{
+  <h4>Movies the genre contains:</h4>
+  <ul>
+  @foreach(var join in Model.Movies)
+  {
+    <li>@join.Movie.Name</li>
+  }
+  </ul>
+}
+
+<p>@Html.ActionLink("Edit Genre", "Edit", new {id = Model.GenreId} )</p>
+<p>@Html.ActionLink("Delete Genre", "Delete", new {id = Model.GenreId})</p>
+<p>@Html.ActionLink("Back to list", "Index")</p>

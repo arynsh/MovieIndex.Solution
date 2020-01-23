@@ -1,0 +1,23 @@
+@{
+    Layout= "_Layout";
+}
+
+@model MovieIndex.Models.Movie
+
+<h3>Add a new movie</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Name)
+    @Html.TextBoxFor(model => model.Name)
+
+    @Html.LabelFor(model => model.Year)
+    @Html.TextBoxFor(model => model.Year)
+
+    @Html.Label("Select Genre")
+    @Html.DropDownList("GenreId")
+
+    <input type="submit" value="Add new item" class="btn btn-primary"/>
+}
+
+<p>@Html.ActionLink("Show all items", "Index")</p>
