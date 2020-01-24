@@ -9,8 +9,8 @@ namespace MovieIndex.Controllers
 {
     public class GenresController : Controller
     {
-        private readonly MovieIndexDbContext _db;
-        public GenresController(MovieIndexDbContext db)
+        private readonly MovieIndexContext _db;
+        public GenresController(MovieIndexContext db)
         {
             _db = db;
         }

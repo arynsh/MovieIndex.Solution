@@ -13,6 +13,7 @@ namespace MovieIndex.Models
         public string Name { get; set; }
         public int MovieId { get; set; }
         public int Year { get; set; }
+        public virtual ApplicationUser User { get; set; }
         public ICollection<GenreMovie> Genres { get; }
     }
 }
